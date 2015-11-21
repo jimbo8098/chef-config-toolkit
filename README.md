@@ -1,5 +1,8 @@
 # chef-config-toolkit
-Config Toolkit Chef Cookbook
+This toolkit has recipes for the following;
+
+- Hosts
+- Composer
 
 ## Hosts
 To append records into the `/etc/hosts` you can populate the attributes
