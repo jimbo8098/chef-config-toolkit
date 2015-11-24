@@ -1,6 +1,11 @@
 default[:hosts] = {}
 
-default[:composer][:key] = nil
+default[:composer] = {}
+
+default[:composer][:key] = {}
+default[:composer][:key][:token] = nil
+default[:composer][:key][:users] = []
+
 default[:composer][:update] = true
 
 default[:mysql] = {}
