@@ -31,7 +31,10 @@ To append records into the `/etc/hosts` you can populate the attributes
     "default_attributes": {
         "composer": {
            "update": false,
-           "key": "deploy-key-1234"
+           "key": {
+                "users": ["my-deploy-user"],
+                "token": "1234"
+            }
         }
     },
     "run_list": [
