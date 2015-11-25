@@ -1,6 +1,6 @@
 if node['deploy']['folders']
     node['deploy']['folders'].each do |folder, options|
-        unless options['chmod']?
+        if options['chmod'].nil?
             options['chmod'] = "755"
         end
 
@@ -15,11 +15,11 @@ end
 
 if node['deploy']['files']
     node['deploy']['files'].each do |file, options|
-        unless options['chmod']?
+        if options['chmod'].nil?
             options['chmod'] = "755"
         end
 
-        unless options['content']?
+        if options['content'].nil?
             options['content'] = ""
         end
 
