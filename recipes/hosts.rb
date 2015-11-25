@@ -4,7 +4,7 @@ if node['hosts']
             hostsfile_entry name do
               hostname  host
               comment   'Added by Chef'
-              action    :create
+              action    :append
             end
         end
     end
