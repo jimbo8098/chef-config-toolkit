@@ -2,8 +2,8 @@ if node['deploy']['folders']
     node['deploy']['folders'].each do |folder, options|
         @chmod = "755"
 
-        unless options.chmod
-            @chmod = options.chmod
+        unless options['chmod']
+            @chmod = options['chmod']
         end
 
         directory folder do
