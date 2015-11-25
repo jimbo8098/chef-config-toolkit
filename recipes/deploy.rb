@@ -15,3 +15,24 @@ if node['deploy']['folders']
     end
 end
 
+if node['deploy']['files']
+    node['deploy']['files'].each do |file, options|
+        @chmod = "755"
+        @content = ""
+
+        unless options['chmod']
+            @chmod = options['chmod']
+        end
+
+        unless options['content']
+            @content = options['content']
+        end
+
+        file file do
+          owner options.user
+          group options.group
+          mode @chmod
+          content @content
+        end
+    end
+end
