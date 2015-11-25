@@ -10,3 +10,7 @@ default[:composer][:update] = true
 
 default[:mysql] = {}
 default[:mysql][:users] = {}
+
+default[:deploy] = {}
+default[:deploy][:folders] = {}
+default[:deploy][:files] = {}
