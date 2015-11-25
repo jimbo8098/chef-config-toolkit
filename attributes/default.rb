@@ -12,5 +12,7 @@ default[:mysql] = {}
 default[:mysql][:users] = {}
 
 default[:deploy] = {}
+default[:deploy][:user] = "root"
+default[:deploy][:group] = "root"
 default[:deploy][:folders] = {}
 default[:deploy][:files] = {}
