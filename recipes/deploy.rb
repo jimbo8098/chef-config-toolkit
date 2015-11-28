@@ -20,6 +20,7 @@ if node['deploy']['folders']
           owner @user
           group @group
           mode @chmod
+          recursive true
           action :create
         end
     end
