@@ -4,7 +4,7 @@ if node['deploy']['folders']
         @user = node['deploy']['user']
         @group = node['deploy']['group']
 
-        unless options['chmod']
+        unless options['chmod'].nil?
             @chmod = options['chmod']
         end
 
@@ -33,11 +33,11 @@ if node['deploy']['files']
         @user = node['deploy']['user']
         @group = node['deploy']['group']
 
-        unless options['chmod']
+        unless options['chmod'].nil?
             @chmod = options['chmod']
         end
 
-        unless options['content']
+        unless options['content'].nil?
             @content = options['content']
         end
 
