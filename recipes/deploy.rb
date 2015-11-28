@@ -2,17 +2,17 @@ if node['deploy']['folders']
     node['deploy']['folders'].each do |folder, options|
         @chmod = "755"
         @user = node['deploy']['user']
-        @group = node['deploy']['user']
+        @group = node['deploy']['group']
 
         unless options['chmod']
             @chmod = options['chmod']
         end
 
-        unless options['group']
+        unless options['group'].nil?
             @group = options['group']
         end
 
-        unless options['user']
+        unless options['user'].nil?
             @user = options['user']
         end
 
@@ -30,7 +30,7 @@ if node['deploy']['files']
         @chmod = "755"
         @content = ""
         @user = node['deploy']['user']
-        @group = node['deploy']['user']
+        @group = node['deploy']['group']
 
         unless options['chmod']
             @chmod = options['chmod']
@@ -40,11 +40,11 @@ if node['deploy']['files']
             @content = options['content']
         end
 
-        unless options['group']
+        unless options['group'].nil?
             @group = options['group']
         end
 
-        unless options['user']
+        unless options['user'].nil?
             @user = options['user']
         end
 
