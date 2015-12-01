@@ -1,25 +1,25 @@
 if node['deploy']['folders']
     node['deploy']['folders'].each do |folder, options|
-        @chmod = "755"
-        @user = node['deploy']['user']
-        @group = node['deploy']['group']
+        chmod = "755"
+        user = node['deploy']['user']
+        group = node['deploy']['group']
 
         if options['chmod']
-            @chmod = options['chmod']
+            chmod = options['chmod']
         end
 
-        unless options['group'].nil?
-            @group = options['group']
+        if options['group']
+            group = options['group']
         end
 
-        unless options['user'].nil?
-            @user = options['user']
+        if options['user']
+            user = options['user']
         end
 
         directory folder do
-          owner @user
-          group @group
-          mode @chmod
+          owner "#{user}"
+          group "#{group}"
+          mode "#{chmod}"
           recursive true
           action :create
         end
