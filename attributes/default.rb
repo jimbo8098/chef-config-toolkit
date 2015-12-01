@@ -16,3 +16,4 @@ default[:deploy][:user] = "root"
 default[:deploy][:group] = "root"
 default[:deploy][:folders] = {}
 default[:deploy][:files] = {}
+default[:deplpy][:setfacl] = {}

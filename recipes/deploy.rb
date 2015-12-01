@@ -26,6 +26,15 @@ if node['deploy']['folders']
     end
 end
 
+if node['deplpy']['setfacl']
+    node['deploy']['setfacl'].each do |folder, options|
+        execute "setfacl #{options}" do
+          command "setfacl #{options}"
+          action :run
+        end
+    end
+end
+
 if node['deploy']['files']
     node['deploy']['files'].each do |file, options|
         @chmod = "755"
