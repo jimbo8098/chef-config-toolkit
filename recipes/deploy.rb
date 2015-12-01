@@ -26,7 +26,7 @@ if node['deploy']['folders']
     end
 end
 
-if node['deplpy']['setfacl']
+if node['deploy']['setfacl']
     node['deploy']['setfacl'].each do |folder, options|
         execute "setfacl #{options}" do
           command "setfacl #{options}"
