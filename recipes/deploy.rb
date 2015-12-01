@@ -60,7 +60,7 @@ if node['deploy']['files']
 
         file file do
           owner "#{user}"
-          group "#{group}""
+          group "#{group}"
           mode "#{chmod}"
           content "#{content}"
         end
