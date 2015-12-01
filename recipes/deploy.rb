@@ -28,7 +28,7 @@ end
 
 if node['deploy']['setfacl']
     node['deploy']['setfacl'].each do |folder, options|
-        execute "setfacl #{options}" do
+        execute "setfacl #{folder}" do
           command "setfacl #{options} #{folder}"
           action :run
         end
