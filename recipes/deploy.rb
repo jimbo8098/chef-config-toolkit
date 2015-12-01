@@ -37,32 +37,32 @@ end
 
 if node['deploy']['files']
     node['deploy']['files'].each do |file, options|
-        @chmod = "755"
-        @content = ""
-        @user = node['deploy']['user']
-        @group = node['deploy']['group']
+        chmod = "755"
+        content = ""
+        user = node['deploy']['user']
+        group = node['deploy']['group']
 
-        unless options['chmod'].nil?
-            @chmod = options['chmod']
+        if options['chmod']
+            chmod = options['chmod']
         end
 
-        unless options['content'].nil?
-            @content = options['content']
+        if options['content']
+            content = options['content']
         end
 
-        unless options['group'].nil?
-            @group = options['group']
+        if options['group']
+            group = options['group']
         end
 
-        unless options['user'].nil?
-            @user = options['user']
+        if options['user']
+            user = options['user']
         end
 
         file file do
-          owner @user
-          group @group
-          mode @chmod
-          content @content
+          owner "#{user}"
+          group "#{group}""
+          mode "#{chmod}"
+          content "#{content}"
         end
     end
 end
