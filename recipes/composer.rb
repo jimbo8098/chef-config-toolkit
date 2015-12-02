@@ -12,8 +12,8 @@ end
 
 if node['composer']['key']['users']
     node['composer']['key']['users'].each do |user|
-        link '/usr/local/bin/composer' do
-          to "/home/#{user}/composer"
+        link  "/home/#{user}/composer" do
+          to '/usr/local/bin/composer'
         end
     end
 end
