@@ -10,6 +10,14 @@ execute "Composer Update" do
   not_if { node['composer']['key'] == false }
 end
 
+if node['composer']['key']['users']
+    node['composer']['key']['users'].each do |user|
+        link '/usr/local/bin/composer' do
+          to '/home/#{user}/composer'
+        end
+    end
+end
+
 if node['composer']['key']['token'] && node['composer']['key']['users']
     node['composer']['key']['users'].each do |user|
         execute "Add Deployment Key" do
