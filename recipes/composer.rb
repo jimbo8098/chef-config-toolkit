@@ -13,7 +13,7 @@ end
 if node['composer']['key']['users']
     node['composer']['key']['users'].each do |user|
         link '/usr/local/bin/composer' do
-          to '/home/#{user}/composer'
+          to "/home/#{user}/composer"
         end
     end
 end
