@@ -15,6 +15,10 @@ if node['composer']['key']['users']
         link  "/home/#{user}/composer" do
           to '/usr/local/bin/composer'
         end
+        
+        link  "/home/#{user}/composer.phar" do
+          to '/usr/local/bin/composer'
+        end
     end
 end
 
