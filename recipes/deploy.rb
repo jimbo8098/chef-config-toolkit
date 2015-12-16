@@ -35,6 +35,15 @@ if node['deploy']['setfacl']
     end
 end
 
+if node['deploy']['symlinks']
+    node['deploy']['symlinks'].each do |source, target|
+        execute "symlink #{source}" do
+          command "ln -s #{source} #{target}"
+          action :run
+        end
+    end
+end
+
 if node['deploy']['files']
     node['deploy']['files'].each do |file, options|
         chmod = "755"
