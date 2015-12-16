@@ -17,3 +17,4 @@ default[:deploy][:group] = "root"
 default[:deploy][:folders] = {}
 default[:deploy][:files] = {}
 default[:deploy][:setfacl] = {}
+default[:deploy][:symlinks] = {}
