@@ -9,19 +9,19 @@ if node['mysql'] && node['mysql']['users'] && node['mysql']['server_root_passwor
         if value['password'] && value['database']
             execute "Ensure Database exists for user #{name}" do
                 command "mysql -u root -p#{node['mysql']['server_root_password']} -e \"CREATE DATABASE IF NOT EXISTS #{value['database']};\""
-                sensitive: true
+                sensitive true
                 action :run
             end
 
             execute "Grant usage for user #{name}" do
                 command "mysql -u root -p#{node['mysql']['server_root_password']} -e \"GRANT usage on *.* to #{name}@#{host} identified by '#{value['password']}';\""
-                sensitive: true
+                sensitive true
                 action :run
             end
 
             execute "Grant access for user #{name}" do
                 command "mysql -u root -p#{node['mysql']['server_root_password']} -e \"GRANT ALL privileges ON #{value['database']}.* to #{name}@#{host};\""
-                sensitive: true
+                sensitive true
                 action :run
             end
         end
