@@ -5,7 +5,7 @@ if node['mysql'] && node['mysql']['users'] && node['mysql']['server_root_passwor
         else
             host = 'localhost'
         end
-        
+
         if value['password'] && value['database']
             execute "Ensure Database exists for user #{name}" do
                 command "mysql -u root -p#{node['mysql']['server_root_password']} -e \"CREATE DATABASE IF NOT EXISTS #{value['database']};\""
@@ -25,5 +25,12 @@ if node['mysql'] && node['mysql']['users'] && node['mysql']['server_root_passwor
                 action :run
             end
         end
+    end
+
+    execute "Set up timezones" do
+        command "mysql_tzinfo_to_sql /usr/share/zoneinfo/ | mysql -u root mysql -p#{node['mysql']['server_root_password']}"
+        sensitive true
+        action :run
+        only_if { File.exist?("/usr/bin/mysql_tzinfo_to_sql") }
     end
 end
