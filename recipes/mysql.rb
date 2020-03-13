@@ -28,7 +28,7 @@ if node['mysql'] && node['mysql']['users'] && node['mysql']['server_root_passwor
     end
 
     execute "Set up timezones" do
-        command "mysql_tzinfo_to_sql /usr/share/zoneinfo/ | mysql -u root mysql -p#{node['mysql']['server_root_password']}"
+      command node['mysql'].key('server_root_password')? "mysql_tzinfo_to_sql /usr/share/zoneinfo/ | mysql -u root mysql -p#{node['mysql']['server_root_password']}" : "mysql_tzinfo_to_sql /usr/share/zoneinfo/ | mysql -u root mysql"
         sensitive true
         action :run
         only_if { File.exist?("/usr/bin/mysql_tzinfo_to_sql") }
